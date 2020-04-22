@@ -93,10 +93,11 @@ function drawArea() {
 
 function drawTank() {
   let canvas = document.getElementById('tank');
-  let cellSize = 10;
+  let cellSize = 1;
   canvas.height = 28 * cellSize;
   canvas.width = 28 * cellSize;
   let ctx = canvas.getContext('2d');
+  console.log("ctx =", ctx);
   let tank = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -125,12 +126,19 @@ function drawTank() {
     [0, 2, 2, 2, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 1, 1, 0],
     [0, 2, 2, 2, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 1, 1, 0]
   ];
-  //ctx.save();
 
   //ctx.translate(cellSize * 5, cellSize * 4);
-
-  for (let j = 0; j < 32; j++) {
-    for (let i = 0; i < 32; i++) {
+  //if (tank[j] && tank[j][i]) {
+  //  return;
+  //}
+  for (let j = 0; j < 26; j++) {
+    for (let i = 0; i < 28; i++) {
+/*      if (tank[j] && tank[j][i]) {
+        return;
+      }*/
+      console.log("i =", i);
+      console.log('j = ', j);
+      console.log('tank[j][i] = ', tank[j][i]);
       switch (tank[j][i]) {
 
         case 1:
@@ -153,43 +161,20 @@ function drawTank() {
   function drawElem(x, y, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, cellSize, cellSize);
-
   }
 
-  //function drawBase(x, y) {
-  //  ctx.fillStyle = '#ff9b2b';
-  //  ctx.fillRect(x, y, cellSize, cellSize);
-  //}
-  //
-  //function drawDark(x, y) {
-  //  ctx.fillStyle = '#906e00';
-  //  ctx.fillRect(x, y, cellSize, cellSize);
-  //}
+  ctx.fillStyle = '#fd9b30';
 
-  //context.beginPath();
-  //context.moveTo(0, 0);
-  //context.lineTo(cellSize, 0);
-  //context.lineTo(cellSize, cellSize);
-  //context.lineTo(0, cellSize);
-  //context.closePath();
-
-  context.fillStyle = '#fd9b30';
-  //context.fill();
-
-  context.lineWidth = 5;
-  //context.strokeStyle = 'red';
-  //context.stroke();
-
-  //context.restore();
 }
 
 function drawTankBig() {
-  let canvas = document.getElementById('tankBig');
-  let cellSize = 5;
-  canvas.height = 28 * cellSize;
-  canvas.width = 28 * cellSize;
-  let ctx = canvas.getContext('2d');
-  let tank = [
+  let canvasBig = document.getElementById('tankBig');
+  let cellSize = 7;
+  canvasBig.height = 28 * cellSize;
+  canvasBig.width = 28 * cellSize;
+  let ctxBig = canvasBig.getContext('2d');
+  console.log('ctxBig = ', ctxBig);
+  let tankBig = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -217,13 +202,13 @@ function drawTankBig() {
     [0, 2, 2, 2, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 1, 1, 0],
     [0, 2, 2, 2, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 1, 1, 0]
   ];
-  //ctx.save();
 
-  //ctx.translate(cellSize * 5, cellSize * 4);
-
-  for (let j = 0; j < 32; j++) {
-    for (let i = 0; i < 32; i++) {
-      switch (tank[j][i]) {
+  for (let j = 0; j < 26; j++) {
+    for (let i = 0; i < 28; i++) {
+/*      if (tankBig[j] && tankBig[j][i]) {
+        return;
+      }*/
+      switch (tankBig[j][i]) {
 
         case 1:
           drawElem(i * cellSize, j * cellSize + cellSize, '#fde6a0');
@@ -243,41 +228,27 @@ function drawTankBig() {
   }
 
   function drawElem(x, y, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(x, y, cellSize, cellSize);
+    ctxBig.fillStyle = color;
+    ctxBig.fillRect(x, y, cellSize, cellSize);
 
   }
 
-  //function drawBase(x, y) {
-  //  ctx.fillStyle = '#ff9b2b';
-  //  ctx.fillRect(x, y, cellSize, cellSize);
-  //}
-  //
-  //function drawDark(x, y) {
-  //  ctx.fillStyle = '#906e00';
-  //  ctx.fillRect(x, y, cellSize, cellSize);
-  //}
-
-  //context.beginPath();
-  //context.moveTo(0, 0);
-  //context.lineTo(cellSize, 0);
-  //context.lineTo(cellSize, cellSize);
-  //context.lineTo(0, cellSize);
-  //context.closePath();
-
-  context.fillStyle = '#fd9b30';
-  //context.fill();
-
-  context.lineWidth = 5;
-  //context.strokeStyle = 'red';
-  //context.stroke();
-
-  //context.restore();
 }
+//function drawTankTest() {
+//  let canvas = document.getElementById('tankBig');
+//  let cellSize = 7;
+//  canvas.height = 50;
+//  canvas.width = 50e;
+//  let ctxBig = canvas.getContext('2d');
+//  ctxBig.fillRect(x, y, cellSize, cellSize);
+//  ctxBig.fillStyle = '#fd9b30';
+//}
 
 document.addEventListener("DOMContentLoaded", function () {
   drawArea();
   drawTank();
+  drawTankBig();
+  //drawTankTest();
 });
 
 

@@ -96,10 +96,15 @@ ul, ol {
     color: green;
   }
 }
-
+.drawArea{
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+}
 .drawMap{
   position: relative;
-  width: 480px;
+  width: 512px;
+  height: 480px;
   &__item{
     position: absolute;
     left: 0;
@@ -111,7 +116,8 @@ ul, ol {
 }
 .drawTank{
   background-color: black;
-  max-width: 480px;
+  height: auto;
+  padding: 15px;
 }
 
 
