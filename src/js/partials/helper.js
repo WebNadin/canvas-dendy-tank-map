@@ -1,0 +1,3 @@
+document.addEventListener("DOMContentLoaded", function (event) {
+  // some helper code...
+});

@@ -1,0 +1,133 @@
+a {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 120%;
+  margin: 0 0 0.5em 0;
+}
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 120%;
+  margin: 0.5em 0;
+}
+h2 {
+  font-size: 1.75em;
+  font-weight: bold;
+  line-height: 120%;
+  margin: 0.5em 0;
+}
+h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 120%;
+  margin: 0.6em 0;
+}
+h4 {
+  font-size: 1.25em;
+  font-weight: bold;
+  line-height: 120%;
+  margin: 0.8em 0;
+}
+h5 {
+  font-size: 1.1em;
+  font-weight: bold;
+  line-height: 120%;
+  margin: 1em 0;
+}
+h6 {
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 120%;
+  margin: 1em 0;
+}
+html, body {
+  height: 100%;
+}
+body, html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: $bg-main;
+  color: $base;
+  font-size: $font-size-base;
+  font-weight: 400;
+  line-height: normal;
+}
+button, a, input, textarea {
+  outline: none;
+}
+p {
+  margin: 1em 0;
+}
+ul, ol {
+  margin: 1em 0;
+}
+.header, .footer {
+  padding: 25px 0;
+  text-align: center;
+  font-weight: bold;
+}
+.header, footer {
+  background-color: #d1dde2;
+}
+.nn-container {
+  display: block;
+  min-width: 320px;
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 50px;
+  background-color: $bg-white;
+}
+.main {
+  background-color: $bg-main;
+  text-align: center;
+  padding: 0 90px;
+  &__title{
+    margin: 30px 0;
+    font-weight: bold;
+    color: green;
+  }
+}
+
+.drawMap{
+  position: relative;
+  width: 480px;
+  &__item{
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  &__thank{
+    z-index: 10;
+  }
+}
+.drawTank{
+  background-color: black;
+  max-width: 480px;
+}
+
+
+/******* atomic classes *******/
+._bold {
+  font-weight: bold;
+}
+._verticalStretch {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .main {
+    display: flex;
+    flex: 1;
+    height: 100%;
+  }
+}
+
+/******* end_atomic slesses *******/
