@@ -1,7 +1,7 @@
 # Battle City map drawing by Canvas
 
 This project contains map and tank for Dendy Tanks. I used matrix for it.
-There is no animation for tank yet.
+Also there is a simple animation for tank.
 
 ![Battle City](https://github.com/WebNadin/canvas-dendy-tank-map/blob/master/src/images/map-tank.png)
 

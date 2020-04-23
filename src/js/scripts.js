@@ -1,10 +1,20 @@
 //= partials/helper.js
+let cellSizeBase = 32;
 
+let yPos = cellSizeBase * 13;
+let xPos = cellSizeBase * 5;
+console.log('yPos = ', yPos);
+let step = 1;
+let minYPos = cellSizeBase;
+
+let interval = 40;
+let intervalID = setInterval(drawTank, interval);
 function drawArea() {
   var example = document.getElementById("map"),
     ctx = example.getContext('2d'),
-    cellSize = 32,
+    cellSize = cellSizeBase,
     map = [
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0],
       [0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0],
@@ -32,14 +42,14 @@ function drawArea() {
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ];
-  example.height = 15 * cellSize;
+  example.height = 16 * cellSize;
   example.width = 16 * cellSize;
   ctx.fillStyle = '#ccc';
   ctx.fillRect(0, 0, example.width, example.height);
   ctx.fillStyle = 'black';
-  ctx.fillRect(cellSize, cellSize, 13 * cellSize, 13 * cellSize);
+  ctx.fillRect(cellSize, cellSize, 13 * cellSize, 448);
   for (let i = 0; i < 26; i++) {
-    for (let j = 0; j < 26; j++) {
+    for (let j = 0; j < 28; j++) {
       switch (map[i][j]) {
 
         case 1:
@@ -91,13 +101,14 @@ function drawArea() {
   }
 }
 
-function drawTank(k) {
+function drawTank() {
   let canvas = document.getElementById('tank');
-  let cellSize = 1;
-  canvas.height = 32 * 16 * cellSize;
-  canvas.width = 32 * 16 * cellSize;
-  let ctx = canvas.getContext('2d');
-  ctx.translate(cellSize * 32 * 5, cellSize * 32 * 13);
+  let cellSizeTank = cellSizeBase / 32;
+  canvas.height = 32 * 16 * cellSizeTank;
+  canvas.width = 32 * 16 * cellSizeTank;
+  let tankContext = canvas.getContext('2d');
+  //let yPos = cellSizeBase * k;
+  //tankContext.translate(cellSizeBase * 5, yPos);
 
   let tank = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -133,36 +144,47 @@ function drawTank(k) {
       switch (tank[j][i]) {
 
         case 1:
-          drawElem(i * cellSize, j * cellSize + cellSize, '#fde6a0');
+          drawElem(i * cellSizeTank + xPos, j * cellSizeTank + cellSizeTank + yPos, '#fde6a0');
           break;
 
         case 2:
-          drawElem(i * cellSize, j * cellSize + cellSize, '#ff9f31');
+          drawElem(i * cellSizeTank + xPos, j * cellSizeTank + cellSizeTank + yPos, '#ff9f31');
           break;
 
         case 3:
-          drawElem(i * cellSize, j * cellSize + cellSize, '#906e02');
+          drawElem(i * cellSizeTank + xPos, j * cellSizeTank + cellSizeTank + yPos, '#906e02');
           break;
 
       }
 
     }
   }
-  function drawElem(x, y, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(x, y, cellSize, cellSize);
+
+
+  yPos -= step;
+  console.log('yPos = ', yPos);
+  console.log("minYPos =", minYPos);
+  if (yPos < minYPos) {
+    clearInterval(intervalID);
   }
 
-  ctx.fillStyle = '#fd9b30';
+
+  function drawElem(x, y, color) {
+    tankContext.fillStyle = color;
+    tankContext.fillRect(x, y, cellSizeTank, cellSizeTank);
+
+  }
+
+  tankContext.fillStyle = '#fd9b30';
 
 }
 
 function drawTankBig() {
   let canvasBig = document.getElementById('tankBig');
-  let cellSize = 7;
-  canvasBig.height = 28 * cellSize;
-  canvasBig.width = 28 * cellSize;
-  let ctxBig = canvasBig.getContext('2d');
+  let cellSizeBigTank = cellSizeBase / 4;
+  canvasBig.height = 28 * cellSizeBigTank;
+  canvasBig.width = 28 * cellSizeBigTank;
+  let bigTankContext = canvasBig.getContext('2d');
   let tankBig = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -198,15 +220,15 @@ function drawTankBig() {
       switch (tankBig[j][i]) {
 
         case 1:
-          drawElem(i * cellSize, j * cellSize + cellSize, '#fde6a0');
+          drawElem(i * cellSizeBigTank, j * cellSizeBigTank + cellSizeBigTank, '#fde6a0');
           break;
 
         case 2:
-          drawElem(i * cellSize, j * cellSize + cellSize, '#ff9f31');
+          drawElem(i * cellSizeBigTank, j * cellSizeBigTank + cellSizeBigTank, '#ff9f31');
           break;
 
         case 3:
-          drawElem(i * cellSize, j * cellSize + cellSize, '#906e02');
+          drawElem(i * cellSizeBigTank, j * cellSizeBigTank + cellSizeBigTank, '#906e02');
           break;
 
       }
@@ -215,8 +237,8 @@ function drawTankBig() {
   }
 
   function drawElem(x, y, color) {
-    ctxBig.fillStyle = color;
-    ctxBig.fillRect(x, y, cellSize, cellSize);
+    bigTankContext.fillStyle = color;
+    bigTankContext.fillRect(x, y, cellSizeBigTank, cellSizeBigTank);
 
   }
 
@@ -224,7 +246,7 @@ function drawTankBig() {
 
 document.addEventListener("DOMContentLoaded", function () {
   drawArea();
-  drawTank();
+  //drawTank();
   drawTankBig();
 });
 
