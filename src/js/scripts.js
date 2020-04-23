@@ -97,9 +97,7 @@ function drawTank(k) {
   canvas.height = 32 * 16 * cellSize;
   canvas.width = 32 * 16 * cellSize;
   let ctx = canvas.getContext('2d');
-  console.log('k before translate= ',k);
   ctx.translate(cellSize * 32 * 5, cellSize * 32 * 13);
-  console.log('k after translate= ',k);
 
   let tank = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -226,12 +224,6 @@ function drawTankBig() {
 
 document.addEventListener("DOMContentLoaded", function () {
   drawArea();
-  let k = 13;
-  while (k) {
-    console.log("test =");
-    drawTank(k);
-    k--;
-  }
   drawTank();
   drawTankBig();
 });
