@@ -1,14 +1,14 @@
 //= partials/helper.js
 let cellSizeBase = 32;
 
-let yPos = cellSizeBase * 13;
+let yPos = cellSizeBase * 13 +  cellSizeBase / 2;
 let xPos = cellSizeBase * 5;
-console.log('yPos = ', yPos);
 let step = 1;
 let minYPos = cellSizeBase;
 
-let interval = 40;
+let interval = 20;
 let intervalID = setInterval(drawTank, interval);
+
 function drawArea() {
   var example = document.getElementById("map"),
     ctx = example.getContext('2d'),
@@ -47,8 +47,8 @@ function drawArea() {
   ctx.fillStyle = '#ccc';
   ctx.fillRect(0, 0, example.width, example.height);
   ctx.fillStyle = 'black';
-  ctx.fillRect(cellSize, cellSize, 13 * cellSize, 448);
-  for (let i = 0; i < 26; i++) {
+  ctx.fillRect(cellSize, cellSize, 13 * cellSize, 432);
+  for (let i = 0; i < 27; i++) {
     for (let j = 0; j < 28; j++) {
       switch (map[i][j]) {
 
@@ -107,8 +107,6 @@ function drawTank() {
   canvas.height = 32 * 16 * cellSizeTank;
   canvas.width = 32 * 16 * cellSizeTank;
   let tankContext = canvas.getContext('2d');
-  //let yPos = cellSizeBase * k;
-  //tankContext.translate(cellSizeBase * 5, yPos);
 
   let tank = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -144,15 +142,15 @@ function drawTank() {
       switch (tank[j][i]) {
 
         case 1:
-          drawElem(i * cellSizeTank + xPos, j * cellSizeTank + cellSizeTank + yPos, '#fde6a0');
+          drawElem(i * cellSizeTank + xPos + 2, j * cellSizeTank + cellSizeTank + yPos, '#fde6a0');
           break;
 
         case 2:
-          drawElem(i * cellSizeTank + xPos, j * cellSizeTank + cellSizeTank + yPos, '#ff9f31');
+          drawElem(i * cellSizeTank + xPos + 2, j * cellSizeTank + cellSizeTank + yPos, '#ff9f31');
           break;
 
         case 3:
-          drawElem(i * cellSizeTank + xPos, j * cellSizeTank + cellSizeTank + yPos, '#906e02');
+          drawElem(i * cellSizeTank + xPos + 2, j * cellSizeTank + cellSizeTank + yPos, '#906e02');
           break;
 
       }
@@ -160,10 +158,7 @@ function drawTank() {
     }
   }
 
-
   yPos -= step;
-  console.log('yPos = ', yPos);
-  console.log("minYPos =", minYPos);
   if (yPos < minYPos) {
     clearInterval(intervalID);
   }
