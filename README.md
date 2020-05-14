@@ -1,28 +1,26 @@
-# Battle City map drawing by Canvas
+# Battle City map (Canvas)
 
-This project contains map and tank for Dendy Tanks. I used matrix for it.
-Also there is a simple animation for tank.
+![Battle City](https://github.com/WebNadin/canvas-dendy-tank-map/raw/master/src/images/map-tank.png)
 
-![Battle City](https://github.com/WebNadin/canvas-dendy-tank-map/blob/master/src/images/map-tank.png)
+There are a map like in Battle City game and a simple animation for tank.
+
+ In this project I mastered:
+ - Canvas
+ - using matrix for drawing map and tank according to conditions
+ - create matrix from jpeg picture
+ - animation with setInterval and changing of coordinates
+
+ Website here: [Battle City](http://webnadin.inf.ua/battle-city/)
 
 ### Installation
 
-This page requires [Node.js](https://nodejs.org/) to run.
-
-You could follow next steps to deploy local project
+You could follow next steps to deploy a local project:
+ - clone branch `master` with `https://github.com/WebNadin/canvas-dendy-tank-map.git` or fork it and then clone it from your forked repo
 
  ```
 $ npm i
 $ gulp
 ```
-
-This build tool contains normalise.scss (imported in style.scss). Also you have here head, header, footer and two fonts.
-There are some base variables in variable.scss for using through the project.
-
-This project use html, scss and pure js. There is no jQuery but you can add any library by adding file to
-src\js\partials folder and including js file into src\js\scripts.js
-
-You'll always have footer in the bottom of the page even if you have low amount of content.
 
 
 License
