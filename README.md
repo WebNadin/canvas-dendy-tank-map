@@ -15,7 +15,8 @@ There are a map like in Battle City game and a simple animation for tank.
 ### Installation
 
 You could follow next steps to deploy a local project:
- - clone branch `master` with `https://github.com/WebNadin/canvas-dendy-tank-map.git` or fork it and then clone it from your forked repo
+ - clone branch `master` with `git clone https://github.com/WebNadin/canvas-dendy-tank-map.git` or fork it and then
+ clone it from your forked repo
 
  ```
 $ npm i
