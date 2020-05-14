@@ -1,6 +1,6 @@
 # Battle City map (Canvas)
 
-![Battle City](https://github.com/WebNadin/canvas-dendy-tank-map/raw/master/src/images/map-tank.png)
+![Battle City](https://github.com/WebNadin/canvas-dendy-tank-map/raw/master/src/images/tank-gif.gif)
 
 There are a map like in Battle City game and a simple animation for tank.
 
